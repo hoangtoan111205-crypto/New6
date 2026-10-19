@@ -1,0 +1,346 @@
+
+/* Thiết lập chung */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f5f9;
+    color: #252b36;
+}
+
+/* Header cố định */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 72px;
+    padding: 12px 5%;
+    background-color: #172554;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #fbbf24;
+}
+
+.head-link {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.head-link a {
+    padding: 10px 12px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.head-link a:hover {
+    color: #fbbf24;
+    background-color: #263b70;
+    font-weight: bold;
+}
+
+/* Bố cục hai cột */
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 24px 40px;
+}
+
+/* Cột danh sách phim */
+.left-content {
+    flex: 0 0 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.left-content h2 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+#searchInput,
+#sortSelect {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px;
+    border: 1px solid #d8deea;
+    border-radius: 7px;
+    font-size: 14px;
+    background-color: white;
+}
+
+.left-content label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#movieList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.movie {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 10px;
+    text-align: left;
+    background-color: #f7f8fc;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #252b36;
+}
+
+.movie[hidden] {
+    display: none;
+}
+
+.movie:hover,
+.movie.active {
+    background-color: #eaf0ff;
+    border-color: #4169e1;
+}
+
+.movie-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background-color: #dbeafe;
+    border-radius: 8px;
+    font-size: 28px;
+}
+
+.movie strong,
+.movie small {
+    display: block;
+}
+
+.movie strong {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.movie small {
+    color: #68738a;
+    font-size: 12px;
+}
+
+#noResults {
+    color: #b42318;
+    font-size: 14px;
+}
+
+/* Khu vực xem phim */
+.right-content {
+    flex: 1;
+    min-width: 0;
+    padding: 24px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.section-heading h1 {
+    margin: 5px 0;
+    font-size: 28px;
+}
+
+.eyebrow {
+    margin: 0;
+    color: #4169e1;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.quality {
+    padding: 7px 12px;
+    color: white;
+    background-color: #16a34a;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Video YouTube */
+.video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #111827;
+    border-radius: 10px;
+}
+
+.video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.movie-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0 28px;
+    color: #5d6678;
+    font-size: 13px;
+}
+
+.description {
+    padding: 20px;
+    background-color: #f7f8fc;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+.description h2,
+.sample-video h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.description p {
+    color: #596273;
+}
+
+.sample-video {
+    margin-top: 28px;
+}
+
+.sample-video video {
+    display: block;
+    border-radius: 10px;
+    background-color: #111;
+}
+
+.note {
+    color: #68738a;
+    font-size: 13px;
+}
+
+/* Footer */
+.footer {
+    padding: 24px 15px;
+    text-align: center;
+    color: #dbeafe;
+    background-color: #172554;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .container {
+        gap: 16px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .left-content {
+        flex-basis: 250px;
+    }
+
+    .right-content {
+        padding: 18px;
+    }
+
+    .section-heading h1 {
+        font-size: 23px;
+    }
+}
+
+/* Điện thoại */
+@media (max-width: 650px) {
+    .header {
+        position: relative;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 10px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .head-link {
+        justify-content: center;
+        gap: 3px;
+    }
+
+    .head-link a {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 20px 12px;
+    }
+
+    .left-content,
+    .right-content {
+        width: 100%;
+        flex-basis: auto;
+    }
+
+    .right-content {
+        padding: 15px;
+    }
+
+    .section-heading h1 {
+        font-size: 21px;
+    }
+
+    .movie-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
