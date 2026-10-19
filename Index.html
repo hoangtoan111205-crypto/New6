@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thế Giới Hoạt Hình</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a class="logo" href="#">🎬 Hoạt Hình<span>+</span></a>
+
+        <nav class="head-link">
+            <a href="#home">Trang chủ</a>
+            <a href="#movies">Phim hoạt hình</a>
+            <a href="#about">Giới thiệu</a>
+        </nav>
+    </header>
+
+    <!-- Nội dung trang -->
+    <div class="container" id="home">
+
+        <aside class="left-content" id="movies">
+            <h2>📺 Danh sách phim</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Tìm tên phim..."
+                aria-label="Tìm tên phim"
+            >
+
+            <label for="sortSelect">Sắp xếp phim:</label>
+            <select id="sortSelect">
+                <option value="newest">Mới cập nhật</option>
+                <option value="views">Nhiều lượt xem</option>
+            </select>
+
+            <div id="movieList">
+                <button class="movie active"
+                    data-title="Thỏ con phiêu lưu"
+                    data-views="9500"
+                    data-date="20261018"
+                    data-video="aqz-KE-bpKQ">
+                    <span class="movie-icon">🐰</span>
+                    <span>
+                        <strong>Thỏ con phiêu lưu</strong>
+                        <small>9.500 lượt xem</small>
+                    </span>
+                </button>
+
+                <button class="movie"
+                    data-title="Thế giới đại dương"
+                    data-views="15000"
+                    data-date="20261015"
+                    data-video="M7lc1UVf-VE">
+                    <span class="movie-icon">🐬</span>
+                    <span>
+                        <strong>Thế giới đại dương</strong>
+                        <small>15.000 lượt xem</small>
+                    </span>
+                </button>
+
+                <button class="movie"
+                    data-title="Cuộc phiêu lưu rừng xanh"
+                    data-views="22000"
+                    data-date="20261010"
+                    data-video="ysz5S6PUM-U">
+                    <span class="movie-icon">🦁</span>
+                    <span>
+                        <strong>Cuộc phiêu lưu rừng xanh</strong>
+                        <small>22.000 lượt xem</small>
+                    </span>
+                </button>
+            </div>
+
+            <p id="noResults" hidden>Không tìm thấy phim phù hợp.</p>
+        </aside>
+
+        <main class="right-content">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">KÊNH GIẢI TRÍ GIA ĐÌNH</p>
+                    <h1 id="movieTitle">Thỏ con phiêu lưu</h1>
+                </div>
+                <span class="quality">HD</span>
+            </div>
+
+            <!-- Khung phát video YouTube -->
+            <div class="video-frame">
+                <iframe
+                    id="youtubePlayer"
+                    src="https://www.youtube.com/embed/aqz-KE-bpKQ"
+                    title="Video hoạt hình"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="movie-info">
+                <span>🎞️ Phim hoạt hình</span>
+                <span>👨‍👩‍👧‍👦 Giải trí gia đình</span>
+                <span>📺 Chất lượng HD tùy video</span>
+            </div>
+
+            <section class="description">
+                <h2>Giới thiệu phim</h2>
+                <p>
+                    Khám phá thế giới hoạt hình đầy màu sắc với những câu chuyện
+                    thú vị, nhân vật đáng yêu và bài học ý nghĩa.
+                </p>
+                <p>
+                    Lưu ý: Đây là giao diện bài tập. Hãy thay các video mẫu bằng
+                    video hoạt hình có thuyết minh tiếng Việt và phù hợp với trẻ em.
+                </p>
+            </section>
+
+            <!-- Ví dụ sử dụng thẻ video HTML5 -->
+            <section class="sample-video">
+                <h2>Video HTML5 mẫu</h2>
+                <video controls preload="metadata" width="100%">
+                    <source
+                        src="https://www.w3schools.com/html/mov_bbb.mp4"
+                        type="video/mp4">
+                    Trình duyệt của bạn không hỗ trợ video.
+                </video>
+                <p class="note">
+                    Video này dùng để minh họa cách sử dụng thẻ video HTML5.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="about">
+        <p>© 2026 Hoạt Hình+ | Website thực hành HTML & CSS</p>
+        <p>Mang đến thế giới hoạt hình vui vẻ cho gia đình.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const sortSelect = document.getElementById("sortSelect");
+        const movieList = document.getElementById("movieList");
+        const noResults = document.getElementById("noResults");
+        const movieTitle = document.getElementById("movieTitle");
+        const youtubePlayer = document.getElementById("youtubePlayer");
+
+        function getMovies() {
+            return Array.from(movieList.querySelectorAll(".movie"));
+        }
+
+        function updateMovies() {
+            const keyword = searchInput.value.trim().toLowerCase();
+            const movies = getMovies();
+
+            movies.sort((a, b) => {
+                if (sortSelect.value === "views") {
+                    return Number(b.dataset.views) - Number(a.dataset.views);
+                }
+                return b.dataset.date.localeCompare(a.dataset.date);
+            });
+
+            movies.forEach(movie => {
+                movieList.appendChild(movie);
+                const title = movie.dataset.title.toLowerCase();
+                movie.hidden = !title.includes(keyword);
+            });
+
+            noResults.hidden = movies.some(movie => !movie.hidden);
+        }
+
+        movieList.addEventListener("click", event => {
+            const movie = event.target.closest(".movie");
+            if (!movie) return;
+
+            getMovies().forEach(item => item.classList.remove("active"));
+            movie.classList.add("active");
+
+            movieTitle.textContent = movie.dataset.title;
+            youtubePlayer.src =
+                "https://www.youtube.com/embed/" + movie.dataset.video;
+        });
+
+        searchInput.addEventListener("input", updateMovies);
+        sortSelect.addEventListener("change", updateMovies);
+        updateMovies();
+    </script>
+
+</body>
+</html>
